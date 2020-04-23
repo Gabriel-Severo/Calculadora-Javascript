@@ -16,17 +16,25 @@ function optionSelected(opcao){
     const num2 = Number(prompt('Digite o segundo número: '))
     if(opcao == '1'){
         return calculadora.soma(num1, num2)
-    }
-    if(opcao == '2'){
+    }else if(opcao == '2'){
         return calculadora.subtracao(num1, num2)
+    }else if(opcao == '3'){
+        return calculadora.multiplicacao(num1, num2)
+    }else{
+        return calculadora.divisao(num1, num2)
     }
 
 }
-
-let opcao;
-while(opcao != 0){
+while(true){
     options()
-    opcao = prompt("Qual a opção? ")
+    let opcao = prompt("Qual a opção? ")
+    if (opcao == '0'){
+        break
+    }
+    if(Number(opcao) < 0 || Number(opcao) > 4){
+        console.log("Opção inválida")
+        continue
+    }
     const resultado = optionSelected(opcao)
     console.log(`O resultado é ${resultado}`)
 }
